@@ -6,7 +6,12 @@ LIB_DIR	:= ./lib
 INC_DIR	:= ./includes
 OBJ_DIR	:= ./obj
 
-SRC		:=	main.c
+SRC		:=	main.c \
+			reader.c \
+			reader_code.c \
+			writer.c \
+			utils.c \
+			utils_struct.c
 
 OBJ		:= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
@@ -27,7 +32,7 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 	@$(CC) -g $(CFLAGS) -I $(INC_DIR) $(LIB_INC) -o $@ -c $<
 
 $(NAME): $(OBJ_DIR) $(OBJ)
-	@$(CC) $(OBJ) $(LIB_LNK) -o $(NAME)
+	@$(CC) -g $(OBJ) $(LIB_LNK) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJ_DIR)
