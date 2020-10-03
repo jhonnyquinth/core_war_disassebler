@@ -6,7 +6,7 @@
 /*   By: sbrynn <sbrynn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 22:35:57 by sbrynn            #+#    #+#             */
-/*   Updated: 2020/10/03 23:07:50 by sbrynn           ###   ########.fr       */
+/*   Updated: 2020/10/03 23:08:51 by sbrynn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,11 @@ static int	read_code_arg(char arg, t_cmd *acmd, char cmd)
 	while (i < g_op_tab[(int)cmd].count_arg)
 	{
 		if ((arg & cmp[i]) >> (3 - i) * 2 == 1)
-		// {
-		// 	acmd->arg[i] = 'r';
-		// 	acmd->num_bytes[i] = 1;
-		// }
-		write_to_acmd(acmd, i, 1, 'r');
+			write_to_acmd(acmd, i, 1, 'r');
 		else if ((arg & cmp[i]) >> (3 - i) * 2 == 2)
-		// {
-		// 	acmd->arg[i] = '%';
-		// 	acmd->num_bytes[i] = g_op_tab[(int)cmd].dir_size;
-		// }
-		write_to_acmd(acmd, i, g_op_tab[(int)cmd].dir_size, '%');
+			write_to_acmd(acmd, i, g_op_tab[(int)cmd].dir_size, '%');
 		else if ((arg & cmp[i]) >> (3 - i) * 2 == 3)
-		// {
-		// 	acmd->arg[i] = 'n';
-		// 	acmd->num_bytes[i] = 2;
-		// }
-		write_to_acmd(acmd, i, 2, 'n');
+			write_to_acmd(acmd, i, 2, 'n');
 		else
 			return (1);
 		i++;
